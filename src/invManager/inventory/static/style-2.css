@@ -1,0 +1,91 @@
+body{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.product_container{
+    display: flex;
+    flex-direction: row;
+}
+
+.new_session_form_container{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: center;
+    padding: 40px 0 0 10px;
+
+}
+
+.upload_product_container{
+    display: flex;
+    width: 95%;
+    flex-direction: column; 
+    align-items: center;
+    margin: 10px 0 0 0
+}
+.upload_product_container > ul{
+    width: 100%;
+}
+
+.full-width{
+    width: 98%;
+}
+.link_container{
+    width: 95%;
+    height: 40px;
+    padding: 10px 20px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+}
+
+.product_add_container{
+   margin: 10% 0 0 0;
+   width: 25%;
+}
+.custom-form{
+    text-align: center;
+}
+.warehouse-receiving-container{
+    width: 95%;
+}
+.warehouse-receiving-list{
+    margin: 15px 0 0 0;
+}
+.warehouse-summary-container{
+    width: 95%;
+    margin: 15px 0 0 0;
+}
+
+.all-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-center-column{
+    height: 100%;
+    display: flex;
+    margin-top: 15%;
+    justify-content: center;
+    align-items: center;
+}
+.all-center-column a{
+    margin: 10px;
+}
+.date-form{
+    margin-top: 22px;
+}

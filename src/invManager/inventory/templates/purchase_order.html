@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class = "all-center-column">
+    <a class = "btn btn-primary" href = "{% url 'inventory:create-purchase-order' %}"> CREATE PURCHASE ORDER</a>
+    <a class = "btn btn-secondary" href = "{% url 'inventory:purchase-orders-list' %}"> VIEW PURCHASE ORDERS</a>
+</div>
+
+{% endblock content %}

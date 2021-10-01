@@ -1,0 +1,3 @@
+EXCEL_STANDARD_HEADER = ['ScannedCode', 'ShelfLocation', 'Quantity', 'Description', 'UPC','vendor']
+VENDOR_EXCEL_STANDARD_HEADER = ['Name','Vendor #','Address Line 1','City','State','Zip','Country','Contact','Email','Phone #','Fax #','Source']
+PO_EXCEL_STANDARD_HEADER = ['Source','PO #','Box #','Product Code','Description','Arrival Date','UoM','Pack','On Hand','Start Label #','End Label #','* Print']

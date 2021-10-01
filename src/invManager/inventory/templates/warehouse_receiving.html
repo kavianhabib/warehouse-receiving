@@ -1,0 +1,53 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="warehouse-receiving-container">
+
+
+<form action ="." method = "POST" class="d-flex" id = "myForm"> {% csrf_token %}
+    <input class="form-control me-2" name = "search" type="search" placeholder="Search" aria-label="Search" autofocus>
+    <button class="btn btn-outline-success" type="button
+    " id = "search_btn">Search</button>
+  </form>
+
+  <ul class="list-group warehouse-receiving-list">
+      {% for item in products %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class = "product_container" style="display:flex; flex-direction:row; width: 100%;">
+          <div class = "vendor_container" style="width: 20%;">
+            {{item.product.vendor}}
+          </div>
+          <div class = "name_container"style="width: 45%;">
+            {{item.product.name}}
+          </div>
+          <div class = "name_container"style="width: 10%;">
+            {{item.product.count}}
+          </div>
+          <div class = "count_container" style="width: 15%;">
+            <div class="input-group">
+              <a style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary btn-minus" href="decrease/{{item.id}}" >
+               <strong>−</strong>
+              </a>
+             <input type="text" inputmode="decimal" value = {{item.quantity}} style="text-align: center" class="form-control " placeholder="" size = "2">
+             <a style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary btn-plus" href="increase/{{item.id}}" >
+               <strong>+</strong>
+             </a>
+           </div>
+          </div>
+          <div class = "delete_container" style="width: 10%;">
+            <form action = "{{item.id}}/delete" method="GET">{% csrf_token %}
+              <button type="submit" class="btn btn-outline-secondary" >Delete</button>
+            </form>
+          </div>
+      </div>
+    </li>
+  {% endfor %}
+ 
+  </ul>
+  <div style = "display: flex; width : 100%; justify-content: center; align-items: center;">
+    <!-- <form action = "{{session.id}}/end_session" method = "GET">{% csrf_token %}
+      <button type="submit" class="btn btn-primary btn-lg btn-block">END SESSION</button>
+    </form> -->
+    <a href="end_session">END SESSION</a>
+  </div>
+</div>
+{% endblock %}

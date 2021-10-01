@@ -1,0 +1,89 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<!-- 
+<form method = "POST">
+    <label>Select Vendor</label>
+    <select name = "vendor">
+        {% for vendor in vendors %}
+            <option value = "{{vendor.id}}">{{vendor.name}}</option>
+        {% endfor %}
+    </select>
+</form> -->
+<!-- <form action = "" method = "POST"> {% csrf_token %}
+        {{ form.name }}
+    <button class = "btn btn-primary " type = "submit">Search</button>
+</form> -->
+{% if messages %}
+<div class="alert view">
+  {% for message in messages %}
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+      <strong>Error!</strong> {{ message }} </p>
+    {% endfor %}
+  </div>
+{% endif %}
+<div class="new_session_form_container" style="margin-top:20px;">
+    <form action = "." method = "POST" enctype="multipart/form-data" class = "single-form" id = "po_upload" style="display: flex; flex-direction: row;">    {% csrf_token %}
+      
+        <select name = "vendor" class = "btn btn-secondary dropdown-toggle" style="margin-top: 8px; margin-right: 10px;">
+            {% for vendor in vendors %}
+              {% if vendor.name == vendor_name %}
+              <option value = "{{vendor.id}}" selected>{{vendor.name}}</option>
+
+              {% else %}
+              <option value = "{{vendor.id}}">{{vendor.name}}</option>
+              {% endif %}
+            {% endfor %}
+        </select>
+
+      {{ upload_form.as_p}}
+      <div class = "form-btn-container" style="margin-top: 5px; margin-left: 5px;">
+        <!-- <input type = "submit" value ="IMPORT" class="btn btn-secondary" /> -->
+        <input type = "button" value ="IMPORT" class="btn btn-secondary" onclick="loadPO()"/>
+      </div>
+  </form>
+  </div>
+  <div class="warehouse-receiving-container">
+  <ul class="list-group warehouse-receiving-list">
+{% if products %}
+    {% for item in products %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div class = "product_container" style="display:flex; flex-direction:row; width: 100%;">
+        <div class = "vendor_container" style="width: 20%;">
+          {{item.product.vendor}}
+        </div>
+        <div class = "name_container"style="width: 45%;">
+          {{item.product.name}}
+        </div>
+        <div class = "name_container"style="width: 10%;">
+          {{item.product.count}}
+        </div>
+        <div class = "count_container" style="width: 15%;">
+          <div class="input-group">
+            <a style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary btn-minus" href="decrease/{{item.id}}" >
+             <strong>−</strong>
+            </a>
+           <input type="text" inputmode="decimal" value = {{item.quantity}} style="text-align: center" class="form-control " placeholder="" size = "2">
+           <a style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary btn-plus" href="increase/{{item.id}}" >
+             <strong>+</strong>
+           </a>
+         </div>
+        </div>
+        <div class = "delete_container" style="width: 10%;">
+          <form action = "{{item.id}}/delete" method="GET">{% csrf_token %}
+            <button type="submit" class="btn btn-outline-secondary" >Delete</button>
+          </form>
+        </div>
+    </div>
+  </li>
+{% endfor %}
+{% else%}
+<li class="list-group-item d-flex justify-content-between align-items-center" style="width: 80vw;">
+    <p>There is no product</p>
+</li>
+{% endif%}
+
+</ul>
+</div>
+{% endblock content %}

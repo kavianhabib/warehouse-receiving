@@ -1,0 +1,4 @@
+cd scripts
+activate
+cd..
+cd src/invManager

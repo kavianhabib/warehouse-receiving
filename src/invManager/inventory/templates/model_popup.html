@@ -1,0 +1,26 @@
+
+<!-- Trigger/Open The Modal -->
+
+<!-- The Modal -->
+{% if product != None %}
+<div id="myModal" class="modal-view">
+{% else %}
+<div id="myModal" class="modal">
+{% endif %}
+  <!-- Modal content -->
+  <div class="modal-content">
+      <div class = "close-btn-container">
+        <span class="close" id = "close_popup" onclick="closeModelPopup()">&times;</span>
+      </div>
+      <p>Are you sure you want to delete this item?</p>
+    <div class = "btn-cotnainer">
+        <form action = "delete" method="POST"> {% csrf_token %}
+            <button type="submit" class="btn btn-danger">DELETE</button>
+            <!-- <button type="button" class="btn btn-primary" onclick=" closeModelPopup()">CANCEL</button> -->
+        </form>
+        <form action = ".." method="GET">
+            <button type="submit" class="btn btn-primary" >CANCEL</button>
+        </form>
+    </div>
+  </div>
+</div>

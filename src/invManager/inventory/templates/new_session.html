@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+{% block content %}
+<div class = "new_session_form_container"  >
+    <form method = "POST">    {% csrf_token %}
+        <input type = "submit" value ="CREATE NEW SESSION" class="btn btn-secondary"/>
+    </form>
+    {% if session != None %}
+ <a href="/warehouse_receiving/{{session.id}}/">Click to go to session</a>
+ {% endif %}
+{% endblock %}
+</div>
+

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if messages %}
+<div class="alert view">
+  {% for message in messages %}
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+      <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+      <strong>Error!</strong> {{ message }} </p>
+    {% endfor %}
+  </div>
+{% endif %}
+<div class="warehouse-receiving-container">
+    <div>
+        <h2>{{po.vendor}}</h2>
+    </div>
+    
+      <ul class="list-group warehouse-receiving-list">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class = "product_container" style="display:flex; flex-direction:row; width: 100%;">
+                <div class = "vendor_container" style="width: 30%;">
+                  <h5>Product Name</h5>
+                </div>
+                <div class = "name_container"style="width: 20%;">
+                    <h5>Box size</h5>
+                  </div>
+                <div class = "name_container"style="width: 25%;">
+                    <h5>Ordered Quantity</h5>
+                </div>
+                
+                <!-- <div class = "delete_container" style="width: 10%;">
+                   <form action = "{{item.id}}/delete" method="GET">{% csrf_token %}
+                    <button type="submit" class="btn btn-outline-primary" >Edit</button>
+                  </form> 
+                    <p>{{item.received_quantity}}/{{item.quantity}}</p>  
+                </div> -->
+                <div class = "count_container" style="width: 15%;">
+                    <h5>Received Quantity</h5>
+          </div>
+                <div class = "delete_container" style="width: 10%;">
+                  <span class="position-absolute top-50 translate-middle p-2 bg-{{item.get_badge_display}} border border-light rounded-circle">
+                    <span class="visually-hidden">New alerts</span>
+                  </span>
+                </div>
+                <div class = "delete_container" style="width: 10%;">
+              
+                </div>
+                
+            </div>
+          </li>
+        {% if purchaseOrder %}
+            {% for item in purchaseOrder %}
+            
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div class = "product_container" style="display:flex; flex-direction:row; width: 100%;">
+                <div class = "vendor_container" style="width: 30%;">
+                  {{item.product.name}}
+                </div>
+                <div class = "name_container"style="width: 20%;">
+                    {{item.pack}} - {{item.measure_unit}}
+                  </div>
+                <div class = "name_container"style="width: 25%;">
+                  {{item.quantity}}
+                </div>
+                
+                <!-- <div class = "delete_container" style="width: 10%;">
+                   <form action = "{{item.id}}/delete" method="GET">{% csrf_token %}
+                    <button type="submit" class="btn btn-outline-primary" >Edit</button>
+                  </form> 
+                    <p>{{item.received_quantity}}/{{item.quantity}}</p>  
+                </div> -->
+ 
+                <div class = "delete_container" style="width: 25%;">
+                    <form action = "{% url 'inventory:view-purchase-order' po.po_number%}"  method="POST" style = "display: flex;
+                    flex-direction: row;">{% csrf_token %}
+                      <div class = "count_container" style="width: 50%; margin-right: 10px;">
+                        <div class="input-group">
+                            <a style="min-width: 2.5rem" class="btn btn-decrement btn-outline-secondary btn-minus" href="{{item.get_decrease_quantity_url}}"" >
+                            <strong>−</strong>
+                            </a>
+                            <input type = "text" name = "product_id" value = {{item.id}} style = "display: none;">
+                            <input type="text" name = "quantity" inputmode="decimal" value = {{item.received_quantity}} style="text-align: center" class="form-control " placeholder="" size = "2">
+                            <a style="min-width: 2.5rem" class="btn btn-increment btn-outline-secondary btn-plus" href="{{item.get_increase_quantity_url}}" >
+                            <strong>+</strong>
+                            </a>
+                        </div>
+                    </div>
+                        <button type="submit" class="btn btn-outline-primary" >Update</button>
+                      </form>
+                </div>
+                <div class = "delete_container" style="width: 10%;">
+                  <form action = "{{item.get_delete_url}}" method="GET">{% csrf_token %}
+                    <button type="submit" class="btn btn-outline-danger" >Delete</button>
+                  </form>
+                </div>
+                
+            </div>
+          </li>
+        {% endfor %}
+        {% else%}
+        <li class="list-group-item d-flex justify-content-between align-items-center" style="width: 80vw;">
+            <p>There is no purchase order</p>
+        </li>
+        {% endif%}
+        
+        </ul>
+    </div>
+{% endblock content %}

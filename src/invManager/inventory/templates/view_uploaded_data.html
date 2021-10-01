@@ -1,0 +1,60 @@
+{% extends "base.html"%}
+{% block content %}
+<div class = "link_container">
+    <a href = ".">UPLOAD NEW FILE</a>
+</div>
+<div class = "upload_product_container">
+    <!-- Number of athletes: {{ athlete_list|length }} -->
+    {% if created_set %}
+    <h1>New Created Items</h1>
+    <ul class="list-group">
+        {% for item in created_set %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class = "product_container" style="display:flex; flex-direction:row; width: 100%;">
+            <div class = "vendor_container" style="width: 30%;">
+              {{item.vendor}}
+            </div>
+            <div class = "name_container"style="width: 35%;">
+              {{item.name}}
+            </div>
+            <div class = "count_container" style="width: 25%;">
+                {{item.upc_code}}
+            </div>
+            <div class = "count_container" style="width: 15%;">
+              {{item.count}}
+          </div>
+           
+        </div>
+      </li>
+    {% endfor %}
+
+</ul>
+{% endif %}
+</div>
+<div class = "upload_product_container">
+    {% if updated_set %}
+    <h1>Updated Items</h1>
+    <ul class="list-group">
+        {% for item in updated_set %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class = "product_container" style="display:flex; flex-direction:row; width: 100%;">
+            <div class = "vendor_container" style="width: 30%;">
+              {{item.vendor}}
+            </div>
+            <div class = "name_container"style="width: 35%;">
+              {{item.name}}
+            </div>
+            <div class = "count_container" style="width: 25%;">
+                {{item.upc_code}}
+            </div>
+            <div class = "count_container" style="width: 15%;">
+              {{item.count}}
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+
+</ul>
+{% endif %}
+</div>
+{% endblock %}

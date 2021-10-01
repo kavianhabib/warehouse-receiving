@@ -1,0 +1,14 @@
+{% extends "base.html"%}
+{% block content %}
+<div class="new_session_form_container">
+  <form method = "POST" enctype="multipart/form-data" class = "single-form" id = "bulk_add_form">    {% csrf_token %}
+    {{ form.as_p}}
+    <div class = "form-btn-container">
+      <!-- <input type = "submit" value ="IMPORT" class="btn btn-secondary" /> -->
+      <input type = "button" value ="IMPORT" class="btn btn-secondary" onclick="loadScreen()"/>
+    </div>
+</form>
+</div>
+
+{% include "loading_popup.html" %}
+{% endblock %}

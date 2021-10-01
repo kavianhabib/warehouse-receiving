@@ -1,0 +1,14 @@
+{% if create_promp %}
+<div class="alert view">
+{% else %}
+<div class="alert">
+{% endif %}
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <strong>Error!</strong> There is no item with given UPC or GTIN code. To create this item 
+    {% if create_promp %}
+    <a href = "product_add/1" >click here</a>
+    <!-- <a href = "{% url 'inventory:product_add' 1 %}?next={{ request.path|urlencode }}" >click here</a> -->
+
+
+{% endif %}
+</div>

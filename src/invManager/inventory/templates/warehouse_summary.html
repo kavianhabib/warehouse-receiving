@@ -1,0 +1,65 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="warehouse-summary-container">
+
+  <ul class="list-group">
+    {% if file_name == "" %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class = "product_container" style="display:flex; flex-direction:row; width: 100%;">
+          <div class = "vendor_container" style="width: 40%;">
+            VENDOR
+          </div>
+          <div class = "name_container"style="width: 40%;">
+            PRODUCT NAME
+          </div>
+          <div class = "count_container" style="width: 20%;">
+            <div class="input-group  ">
+             PRODUCT RECEIVED
+           </div>
+          </div>
+          
+      </div>
+    </li>
+    {% endif %}
+      {% for item in products %}
+     
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class = "product_container" style="display:flex; flex-direction:row; width: 100%;">
+          <div class = "vendor_container" style="width: 40%;">
+            {{item.product.vendor}}
+          </div>
+          <div class = "name_container"style="width: 40%;">
+            {{item.product.name}}
+          </div>
+          <div class = "count_container" style="width: 20%;">
+            <div class="input-group  ">
+             {{item.quantity}}
+           </div>
+          </div>
+          
+      </div>
+    </li>
+  {% endfor %}
+  
+  </ul>
+  {% if file_name == "" %}
+  <div class="new_session_form_container">
+    <form method = "POST">    {% csrf_token %}
+      <input type = "submit" value ="CLOSE SESSION | CREATE REPORTS" class="btn btn-secondary"/>
+    </form>
+  </div>
+  {% endif %}
+  {% if file_name != "" %}
+  <p> {{file_name.url}} </p>
+  <div class="new_session_form_container">
+    <a href="end_session/download/{{file_name}}" >{{file_name}}</a>
+    <a href="end_session/download/{{smart_file}}" >{{smart_file}}</a>
+  </div>
+</div>
+
+
+
+
+{% endif %}
+{% endblock %}

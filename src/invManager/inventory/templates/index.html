@@ -1,0 +1,64 @@
+{% extends "base.html"%}
+{% block content %}
+      <div class="row" style="width: 100%;">
+        <div class="col-sm-6" style="width: 50%;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Warehouse Receiving</h5>
+              <p class="card-text">This section is used to process warehouse receving and creating reports.</p>
+              <a href="/new_session/" class="btn btn-primary">Go Warehouse</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6" style="width: 50%;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Import Products</h5>
+              <p class="card-text" style="width: 38vw;">Use this section to import products from excel file.</p>
+              <a href="upload_file/" class="btn btn-primary" >Go Import</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="width: 100%;">
+        <div class="col-sm-6" style="width: 50%;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add New Product</h5>
+              <p class="card-text">Use this section to add a new single product.</p>
+              <a href="/product_add/0" class="btn btn-primary">Go Product</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6" style="width: 50%;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Add New Vendor</h5>
+              <p class="card-text" style="width: 38vw;">Use this section to add a new single vendor.</p>
+              <a href="/vendor_add/" class="btn btn-primary" >Go Vendor</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="width: 100%;">
+        <div class="col-sm-6" style="width: 50%;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Purchase Orders</h5>
+              <p class="card-text">Use this section for importing and receving purchase orders.</p>
+              <a href="purchase-order/" class="btn btn-primary">Go Purchase Orders</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6" style="width: 50%;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Import new Vendors</h5>
+              <p class="card-text" style="width: 38vw;">Use this section to import vendors information from excel file.</p>
+              <a href="populate_vendor/" class="btn btn-primary">Go Import</a>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
